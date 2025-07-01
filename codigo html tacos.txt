@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tacos La Sinaloense</title>
+    <!-- Tailwind CSS CDN for modern, responsive styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter for a clean and readable font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom CSS for Mexican-inspired colors and font */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f3e9; /* Light cream background for a warm feel */
+            color: #333; /* Dark gray for main text */
+        }
+        /* Define custom color palette for Mexican theme */
+        .text-mexican-red { color: #C62828; } /* Deep Red */
+        .bg-mexican-red { background-color: #C62828; }
+        .text-mexican-orange { color: #FF7043; } /* Vibrant Orange */
+        .bg-mexican-orange { background-color: #FF7043; }
+        .text-mexican-green { color: #4CAF50; } /* Cactus Green */
+        .bg-mexican-green { background-color: #4CAF50; }
+        .text-mexican-blue { color: #2196F3; } /* Turquoise Blue */
+        .bg-mexican-blue { background-color: #2196F3; }
+        .border-mexican-red { border-color: #C62828; }
+        .border-mexican-orange { border-color: #FF7043; }
+        .border-mexican-green { border-color: #4CAF50; }
+        .border-mexican-blue { border-color: #2196F3; }
+
+        /* Styles for language toggle - initially Spanish is shown, English is hidden */
+        .lang-es { display: block; }
+        .lang-en { display: none; }
+
+        /* Responsive iframe for maps */
+        .map-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 75%; /* 4:3 Aspect Ratio (change this to 56.25% for 16:9) */
+            height: 0;
+            overflow: hidden;
+            border-radius: 0.5rem; /* rounded-md */
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Custom style for the Hero section background to use the logo */
+        #home {
+            background-image: url('uploaded:Screenshot_20250701-232920_Facebook.jpg-4ce9e6c0-16f5-4489-85b5-c6df10a11966');
+            background-size: cover; /* or 'contain' depending on desired effect */
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Main container for the entire page, set up for flexbox column layout -->
+    <div class="min-h-screen flex flex-col">
+        <!-- Navigation Bar -->
+        <nav class="bg-white shadow-lg p-4 sticky top-0 z-50">
+            <div class="container mx-auto flex justify-between items-center">
+                <!-- Logo/Site Title with Mexican flag colors -->
+                <a href="#" class="text-2xl font-bold rounded-lg p-2">
+                    <span class="text-mexican-green">Tacos</span>
+                    <span class="text-black"> La </span>
+                    <span class="text-mexican-red">Sinaloense</span>
+                </a>
+
+                <!-- Navigation Links -->
+                <div class="flex space-x-6">
+                    <a href="#home" class="text-gray-700 hover:text-mexican-orange font-semibold rounded-lg p-2">
+                        <span class="lang-es">Inicio</span>
+                        <span class="lang-en">Home</span>
+                    </a>
+                    <a href="#menu" class="text-gray-700 hover:text-mexican-orange font-semibold rounded-lg p-2">
+                        <span class="lang-es">Menú</span>
+                        <span class="lang-en">Menu</span>
+                    </a>
+                    <a href="#tortillas" class="text-gray-700 hover:text-mexican-orange font-semibold rounded-lg p-2">
+                        <span class="lang-es">Tortillas</span>
+                        <span class="lang-en">Tortillas</span>
+                    </a>
+                    <a href="#locations" class="text-gray-700 hover:text-mexican-orange font-semibold rounded-lg p-2">
+                        <span class="lang-es">Ubicaciones</span>
+                        <span class="lang-en">Locations</span>
+                    </a>
+                    <a href="#contact" class="text-gray-700 hover:text-mexican-orange font-semibold rounded-lg p-2">
+                        <span class="lang-es">Contacto</span>
+                        <span class="lang-en">Contact</span>
+                    </a>
+                </div>
+
+                <!-- Language Toggle Buttons -->
+                <div class="flex items-center space-x-2">
+                    <button id="lang-es-btn" class="px-4 py-2 bg-mexican-red text-white rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 text-sm">ES</button>
+                    <button id="lang-en-btn" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 text-sm">EN</button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content Area - takes up remaining vertical space -->
+        <main class="flex-grow">
+            <!-- Hero Section: Full-height, background image (now the logo), centered content -->
+            <section id="home" class="relative h-screen flex items-center justify-center text-white">
+                <!-- Overlay for better text readability -->
+                <div class="absolute inset-0 bg-black opacity-50"></div>
+                <!-- Content container -->
+                <div class="relative z-10 text-center p-8 rounded-lg bg-black bg-opacity-40 max-w-3xl mx-auto">
+                    <!-- Main Headline -->
+                    <h1 class="text-5xl md:text-6xl font-bold mb-4 leading-tight">
+                        <span class="lang-es">Tacos La Sinaloense: El Sabor Auténtico de México en Cada Tortilla Hecha a Mano.</span>
+                        <span class="lang-en">Tacos La Sinaloense: Authentic Mexican Flavor in Every Handmade Tortilla.</span>
+                    </h1>
+                    <!-- Sub-headline/Description -->
+                    <p class="text-xl md:text-2xl mb-8">
+                        <span class="lang-es">En Tacos La Sinaloense, cada tortilla es una obra de arte, hecha a mano diariamente con los maíces más selectos y vibrantes colores. Descubre el verdadero sabor de México en nuestros tacos frescos que cambian cada semana.</span>
+                        <span class="lang-en">At Tacos La Sinaloense, every tortilla is a work of art, handmade daily with the finest, most vibrant corn. Discover the true taste of Mexico in our fresh tacos that change weekly.</span>
+                    </p>
+                    <!-- Call to Action Buttons -->
+                    <div class="flex justify-center space-x-4">
+                        <a href="#menu" class="px-8 py-4 bg-mexican-orange text-white text-lg font-semibold rounded-full hover:bg-orange-600 transition duration-300 shadow-lg">
+                            <span class="lang-es">Ver Nuestro Menú</span>
+                            <span class="lang-en">View Our Menu</span>
+                        </a>
+                        <a href="#locations" class="px-8 py-4 bg-mexican-green text-white text-lg font-semibold rounded-full hover:bg-green-600 transition duration-300 shadow-lg">
+                            <span class="lang-es">Encuéntranos</span>
+                            <span class="lang-en">Find Us</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Our Tortillas Section: Highlights the unique handmade tortillas -->
+            <section id="tortillas" class="py-16 bg-white">
+                <div class="container mx-auto px-4 text-center">
+                    <h2 class="text-4xl font-bold mb-8 text-mexican-red">
+                        <span class="lang-es">El Corazón de Nuestros Tacos: Tortillas Artesanales de Maíz de Colores.</span>
+                        <span class="lang-en">The Heart of Our Tacos: Handmade Colorful Corn Tortillas.</span>
+                    </h2>
+                    <p class="text-lg mb-12 max-w-3xl mx-auto">
+                        <span class="lang-es">Lo que nos hace únicos. Creemos que la tortilla es el alma de un buen taco. Por eso, en Tacos La Sinaloense, elaboramos nuestras tortillas frescas cada día, utilizando una variedad de maíces de distintas regiones que no solo aportan sabor y textura excepcionales, sino también hermosos colores naturales. ¡Una verdadera fiesta para tus sentidos!</span>
+                        <span class="lang-en">What makes us unique. We believe the tortilla is the soul of a good taco. That's why, at Tacos La Sinaloense, we make our tortillas fresh every day, using a variety of corn from different regions that not only provide exceptional flavor and texture but also beautiful natural colors. A true feast for your senses!</span>
+                    </p>
+                    <!-- Grid for displaying different tortilla types/colors -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="bg-gray-100 p-6 rounded-lg shadow-md">
+                            <img src="https://placehold.co/400x300/FF7043/FFFFFF?text=Tortilla+Azul" alt="Imagen de Tortilla de Maíz Azul" class="w-full h-48 object-cover rounded-md mb-4">
+                            <h3 class="text-xl font-semibold text-mexican-orange mb-2">
+                                <span class="lang-es">Maíz Azul</span>
+                                <span class="lang-en">Blue Corn</span>
+                            </h3>
+                            <p class="text-gray-700">
+                                <span class="lang-es">Sabor profundo y terroso, ideal para cualquier relleno.</span>
+                                <span class="lang-en">Deep, earthy flavor, ideal for any filling.</span>
+                            </p>
+                        </div>
+                        <div class="bg-gray-100 p-6 rounded-lg shadow-md">
+                            <img src="https://placehold.co/400x300/C62828/FFFFFF?text=Tortilla+Roja" alt="Imagen de Tortilla de Maíz Rojo" class="w-full h-48 object-cover rounded-md mb-4">
+                            <h3 class="text-xl font-semibold text-mexican-red mb-2">
+                                <span class="lang-es">Maíz Rojo</span>
+                                <span class="lang-en">Red Corn</span>
+                            </h3>
+                            <p class="text-gray-700">
+                                <span class="lang-es">Un toque dulce y vibrante, perfecto para sabores intensos.</span>
+                                <span class="lang-en">A sweet and vibrant touch, perfect for intense flavors.</span>
+                            </p>
+                        </div>
+                        <div class="bg-gray-100 p-6 rounded-lg shadow-md">
+                            <img src="https://placehold.co/400x300/4CAF50/FFFFFF?text=Tortilla+Blanca" alt="Imagen de Tortilla de Maíz Blanco/Amarillo" class="w-full h-48 object-cover rounded-md mb-4">
+                            <h3 class="text-xl font-semibold text-mexican-green mb-2">
+                                <span class="lang-es">Maíz Blanco/Amarillo</span>
+                                <span class="lang-en">White/Yellow Corn</span>
+                            </h3>
+                            <p class="text-gray-700">
+                                <span class="lang-es">El clásico, suave y versátil para todos los gustos.</span>
+                                <span class="lang-en">The classic, soft and versatile for all tastes.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Weekly Menu Section: Highlights constant items and a placeholder for weekly specials -->
+            <section id="menu" class="py-16 bg-f7f3e9">
+                <div class="container mx-auto px-4 text-center">
+                    <h2 class="text-4xl font-bold mb-8 text-mexican-blue">
+                        <span class="lang-es">Nuestro Menú Semanal: ¡Siempre Fresco, Siempre Delicioso!</span>
+                        <span class="lang-en">Our Weekly Menu: Always Fresh, Always Delicious!</span>
+                    </h2>
+                    <p class="text-lg mb-12 max-w-3xl mx-auto">
+                        <span class="lang-es">En Tacos La Sinaloense, la creatividad florece. Nuestro menú cambia cada semana para ofrecerte una experiencia culinaria única. Siempre encontrarás nuestros clásicos, ¡pero siempre con un toque diferente!</span>
+                        <span class="lang-en">At Tacos La Sinaloense, creativity flourishes. Our menu changes weekly to offer you a unique culinary experience. You'll always find our classics, but always with a different twist!</span>
+                    </p>
+
+                    <!-- Grid for constant taco offerings -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                        <!-- Birria Tacos -->
+                        <div class="bg-white p-6 rounded-lg shadow-md border-t-4 border-mexican-red">
+                            <img src="https://placehold.co/400x250/C62828/FFFFFF?text=Tacos+de+Birria" alt="Imagen de Tacos de Birria de Res" class="w-full h-48 object-cover rounded-md mb-4">
+                            <h3 class="text-2xl font-semibold text-mexican-red mb-2">
+                                <span class="lang-es">Tacos de Birria de Res</span>
+                                <span class="lang-en">Beef Birria Tacos</span>
+                            </h3>
+                            <p class="text-gray-700">
+                                <span class="lang-es">Carne de res cocinada a fuego lento hasta la perfección, servida con cilantro, cebolla y un toque de limón. ¡Un clásico que nunca falla!</span>
+                                <span class="lang-en">Beef slow-cooked to perfection, served with cilantro, onion, and a hint of lime. A classic that never disappoints!</span>
+                            </p>
+                        </div>
+                        <!-- Chicken Tacos -->
+                        <div class="bg-white p-6 rounded-lg shadow-md border-t-4 border-mexican-orange">
+                            <img src="https://placehold.co/400x250/FF7043/FFFFFF?text=Tacos+de+Pollo" alt="Imagen de Tacos de Pollo" class="w-full h-48 object-cover rounded-md mb-4">
+                            <h3 class="text-2xl font-semibold text-mexican-orange mb-2">
+                                <span class="lang-es">Tacos de Pollo</span>
+                                <span class="lang-en">Chicken Tacos</span>
+                            </h3>
+                            <p class="text-gray-700">
+                                <span class="lang-es">Pollo deshebrado sazonado a la perfección, fresco y ligero, crema.</span>
+                                <span class="lang-en">Shredded chicken seasoned to perfection, fresh and light or sour cream.</span>
+                            </p>
+                        </div>
+                        <!-- Vegetarian Tacos -->
+                        <div class="bg-white p-6 rounded-lg shadow-md border-t-4 border-mexican-green">
+                            <img src="https://placehold.co/400x250/4CAF50/FFFFFF?text=Tacos+Vegetarianos" alt="Imagen de Tacos Vegetarianos" class="w-full h-48 object-cover rounded-md mb-4">
+                            <h3 class="text-2xl font-semibold text-mexican-green mb-2">
+                                <span class="lang-es">Tacos Vegetarianos</span>
+                                <span class="lang-en">Vegetarian Tacos</span>
+                            </h3>
+                            <p class="text-gray-700">
+                                <span class="lang-es">Una explosión de sabor con vegetales de temporada frescos, frijoles negros. ¡Sorprendentemente deliciosos!</span>
+                                <span class="lang-en">A burst of flavor with fresh seasonal vegetables, black beans. Surprisingly delicious!</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Weekly Special Placeholder - easy to update -->
+                    <div class="bg-gray-100 p-8 rounded-lg shadow-lg max-w-2xl mx-auto border-4 border-mexican-blue">
+                        <h3 class="text-3xl font-bold mb-4 text-mexican-blue">
+                            <span class="lang-es">¡Especial de la Semana!</span>
+                            <span class="lang-en">Weekly Special!</span>
+                        </h3>
+                        <p class="text-xl text-gray-800 mb-4">
+                            <span class="lang-es">Mantente atento a nuestras redes sociales o visítanos para descubrir el taco especial de esta semana. ¡Siempre hay algo nuevo y emocionante!</span>
+                            <span class="lang-en">Stay tuned to our social media or visit us to discover this week's special taco. There's always something new and exciting!</span>
+                        </p>
+                        <img src="https://placehold.co/600x300/2196F3/FFFFFF?text=Especial+de+la+Semana" alt="Imagen de un Taco Especial de la Semana" class="w-full h-64 object-cover rounded-md">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Locations Section: Details for the two market locations -->
+            <section id="locations" class="py-16 bg-white">
+                <div class="container mx-auto px-4 text-center">
+                    <h2 class="text-4xl font-bold mb-8 text-mexican-red">
+                        <span class="lang-es">Encuéntranos en el Mercado: Dos Puntos para Tu Antojo.</span>
+                        <span class="lang-en">Find Us at the Market: Two Spots for Your Craving.</span>
+                    </h2>
+                    <p class="text-lg mb-12 max-w-3xl mx-auto">
+                        <span class="lang-es">Nos encanta verte. Estamos ubicados en dos puntos convenientes dentro de los vibrantes mercados callejeros de Ámsterdam. ¡Ven y disfruta de los mejores tacos de la ciudad!</span>
+                        <span class="lang-en">We love to see you. We are located at two convenient spots within Amsterdam's vibrant street markets. Come and enjoy the best tacos in town!</span>
+                    </p>
+
+                    <!-- Grid for displaying two locations side-by-side on larger screens -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <!-- Location 1 Details: Ten Katemarkt -->
+                        <div class="bg-gray-100 p-8 rounded-lg shadow-lg border-t-4 border-mexican-orange">
+                            <h3 class="text-3xl font-bold mb-4 text-mexican-orange">
+                                <span class="lang-es">Ubicación 1: Ten Katemarkt</span>
+                                <span class="lang-en">Location 1: Ten Katemarkt</span>
+                            </h3>
+                            <p class="text-lg text-gray-800 mb-4">
+                                <span class="lang-es">En el corazón de Ámsterdam, el vibrante Ten Katemarkt.</span>
+                                <span class="lang-en">In the heart of Amsterdam, the vibrant Ten Katemarkt.</span>
+                            </p>
+                            <p class="text-gray-600 mb-2">
+                                <span class="lang-es"><strong>Dirección:</strong> Ten Katestraat 10, 1053 CE Amsterdam, Países Bajos</span>
+                                <span class="lang-en"><strong>Address:</strong> Ten Katestraat 10, 1053 CE Amsterdam, Netherlands</span>
+                            </p>
+                            <p class="text-gray-600 mb-4">
+                                <span class="lang-es"><strong>Horario:</strong> Martes a Sábado, 9:30 AM - 4:30 PM</span>
+                                <span class="lang-en"><strong>Hours:</strong> Tuesday to Saturday, 9:30 AM - 4:30 PM</span>
+                            </p>
+                            <!-- Google Map Embed for Ten Katemarkt - Updated with Ten Katestraat 10 -->
+                            <div class="map-container">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2435.81926678278!2d4.86937661596767!3d52.36440627978187!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c5e20601445749%3A0x67a356066804f35!2sTen%20Katemarkt!5e0!3m2!1sen!2snl!4v1678912345678!5m2!1sen!2snl" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                        </div>
+
+                        <!-- Location 2 Details: Albert Cuyp Market -->
+                        <div class="bg-gray-100 p-8 rounded-lg shadow-lg border-t-4 border-mexican-green">
+                            <h3 class="text-3xl font-bold mb-4 text-mexican-green">
+                                <span class="lang-es">Ubicación 2: Albert Cuyp Market</span>
+                                <span class="lang-en">Location 2: Albert Cuyp Market</span>
+                            </h3>
+                            <p class="text-lg text-gray-800 mb-4">
+                                <span class="lang-es">Nos encontrarás al final del famoso Albert Cuyp Market, en la zona de comida.</span>
+                                <span class="lang-en">You'll find us at the very end of the famous Albert Cuyp Market, in the food section.</span>
+                            </p>
+                            <p class="text-gray-600 mb-2">
+                                <span class="lang-es"><strong>Dirección:</strong> Albert Cuypstraat, 1073 BD Amsterdam, Países Bajos</span>
+                                <span class="lang-en"><strong>Address:</strong> Albert Cuypstraat, 1073 BD Amsterdam, Netherlands</span>
+                            </p>
+                            <p class="text-gray-600 mb-4">
+                                <span class="lang-es"><strong>Horario:</strong> Lunes a Sábado, 9:30 AM - 4:30 PM</span>
+                                <span class="lang-en"><strong>Hours:</strong> Monday to Saturday, 9:30 AM - 4:30 PM</span>
+                            </p>
+                            <!-- Google Map Embed for Albert Cuyp Market -->
+                            <div class="map-container">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2436.529892186835!2d4.891040315967262!3d52.35520997978135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c6098c4d12e69f%3A0x88f99e2b1b1b1b1b!2sAlbert%20Cuyp%20Market!5e0!3m2!1sen!2snl!4v1678912345678!5m2!1sen!2snl" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="py-16 bg-f7f3e9">
+                <div class="container mx-auto px-4 text-center">
+                    <h2 class="text-4xl font-bold mb-8 text-mexican-blue">
+                        <span class="lang-es">Contáctanos</span>
+                        <span class="lang-en">Contact Us</span>
+                    </h2>
+                    <p class="text-lg mb-8 max-w-2xl mx-auto">
+                        <span class="lang-es">¿Tienes alguna pregunta o comentario? ¡Nos encantaría escucharte!</span>
+                        <span class="lang-en">Do you have any questions or comments? We'd love to hear from you!</span>
+                    </p>
+                    <div class="bg-white p-8 rounded-lg shadow-lg max-w-xl mx-auto border-t-4 border-mexican-blue">
+                        <p class="text-xl mb-6 text-gray-800">
+                            <span class="lang-es"><strong>Email:</strong> tacoslasinaloenseamster@gmail.com</span>
+                            <span class="lang-en"><strong>Email:</strong> tacoslasinaloenseamster@gmail.com</span>
+                        </p>
+                        <!-- Social Media Icons (using SVG for simplicity and scalability) -->
+                        <div class="flex justify-center space-x-6 text-3xl">
+                            <a href="https://www.facebook.com/tacos.lasinaloense" target="_blank" rel="noopener noreferrer" class="text-mexican-red hover:text-mexican-orange transition duration-300" aria-label="Facebook de Tacos La Sinaloense">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.812c-3.233 0-4.188 1.501-4.188 4.001v2.999z"/></svg>
+                            </a>
+                            <a href="https://www.instagram.com/tacos.lasinaloense/profilecard/?igsh=MXZ1YzViYTF3cjNrNQ==" target="_blank" rel="noopener noreferrer" class="text-mexican-blue hover:text-mexican-orange transition duration-300" aria-label="Instagram de Tacos La Sinaloense">
+                                <!-- Standard Instagram Icon SVG -->
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4c0 3.2-2.6 5.8-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2zm-.2 2A2.4 2.4 0 0 0 5.2 7.2v8.6c0 1.3 1.1 2.4 2.4 2.4h8.8c1.3 0 2.4-1.1 2.4-2.4V7.2c0-1.3-1.1-2.4-2.4-2.4H7.6z"/>
+                                    <path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                                    <circle cx="17.2" cy="6.8" r="1.2"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer Section -->
+        <footer class="bg-mexican-red text-white py-8 mt-auto">
+            <div class="container mx-auto px-4 text-center">
+                <p>&copy; 2024 Tacos La Sinaloense.
+                    <span class="lang-es">Todos los derechos reservados.</span>
+                    <span class="lang-en">All rights reserved.</span>
+                </p>
+                <p class="text-sm mt-2">
+                    <span class="lang-es">Hecho con amor en México.</span>
+                    <span class="lang-en">Made with love in Mexico.</span>
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // JavaScript for Language Toggle functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get references to language buttons
+            const langEsBtn = document.getElementById('lang-es-btn');
+            const langEnBtn = document.getElementById('lang-en-btn');
+            // Get all elements marked for Spanish and English content
+            const langElementsEs = document.querySelectorAll('.lang-es');
+            const langElementsEn = document.querySelectorAll('.lang-en');
+
+            // Function to set the active language
+            function setLanguage(lang) {
+                if (lang === 'es') {
+                    // Show Spanish elements, hide English elements
+                    langElementsEs.forEach(el => el.style.display = 'block');
+                    langElementsEn.forEach(el => el.style.display = 'none');
+                    // Style the active button (Spanish)
+                    langEsBtn.classList.add('bg-mexican-red', 'text-white');
+                    langEsBtn.classList.remove('bg-gray-200', 'text-gray-700');
+                    // Style the inactive button (English)
+                    langEnBtn.classList.add('bg-gray-200', 'text-gray-700');
+                    langEnBtn.classList.remove('bg-mexican-red', 'text-white');
+                    // Set the document's language attribute
+                    document.documentElement.lang = 'es';
+                } else {
+                    // Show English elements, hide Spanish elements
+                    langElementsEs.forEach(el => el.style.display = 'none');
+                    langElementsEn.forEach(el => el.style.display = 'block');
+                    // Style the active button (English)
+                    langEnBtn.classList.add('bg-mexican-red', 'text-white');
+                    langEnBtn.classList.remove('bg-gray-200', 'text-gray-700');
+                    // Style the inactive button (Spanish)
+                    langEsBtn.classList.add('bg-gray-200', 'text-gray-700');
+                    langEsBtn.classList.remove('bg-mexican-red', 'text-white');
+                    // Set the document's language attribute
+                    document.documentElement.lang = 'en';
+                }
+            }
+
+            // Add event listeners to language buttons
+            langEsBtn.addEventListener('click', () => setLanguage('es'));
+            langEnBtn.addEventListener('click', () => setLanguage('en'));
+
+            // Set default language on page load (Spanish)
+            setLanguage('es');
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault(); // Prevent default anchor click behavior
+
+                    // Scroll to the target section smoothly
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // The LLM Integration for Taco Suggestion has been removed as requested.
+            // Removed elements: ingredientsInput, generateTacoBtn, tacoSuggestionOutput, loadingSpinner
+            // Removed event listener: generateTacoBtn.addEventListener
+        });
+    </script>
+</body>
+</html>
