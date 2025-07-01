@@ -283,8 +283,8 @@
                                 <span class="lang-en"><strong>Address:</strong> Ten Katestraat 10, 1053 CE Amsterdam, Netherlands</span>
                             </p>
                             <p class="text-gray-600 mb-4">
-                                <span class="lang-es"><strong>Horario:</strong> Martes a Sábado, 9:30 AM - 4:30 PM</span>
-                                <span class="lang-en"><strong>Hours:</strong> Tuesday to Saturday, 9:30 AM - 4:30 PM</span>
+                                <span class="lang-es"><strong>Horario:</strong> Viernes y Sábado, 9:30 AM - 4:30 PM</span>
+                                <span class="lang-en"><strong>Hours:</strong> Friday and Saturday, 9:30 AM - 4:30 PM</span>
                             </p>
                             <!-- Google Map Embed for Ten Katemarkt - Updated with Ten Katestraat 10 -->
                             <div class="map-container">
@@ -307,8 +307,8 @@
                                 <span class="lang-en"><strong>Address:</strong> Albert Cuypstraat, 1073 BD Amsterdam, Netherlands</span>
                             </p>
                             <p class="text-gray-600 mb-4">
-                                <span class="lang-es"><strong>Horario:</strong> Lunes a Sábado, 9:30 AM - 4:30 PM</span>
-                                <span class="lang-en"><strong>Hours:</strong> Monday to Saturday, 9:30 AM - 4:30 PM</span>
+                                <span class="lang-es"><strong>Horario:</strong> Martes a Sábado, 9:30 AM - 4:30 PM</span>
+                                <span class="lang-en"><strong>Hours:</strong> Tuesday to Saturday, 9:30 AM - 4:30 PM</span>
                             </p>
                             <!-- Google Map Embed for Albert Cuyp Market -->
                             <div class="map-container">
